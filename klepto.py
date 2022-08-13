@@ -60,7 +60,6 @@ def preprocessing(tweet):
     return final 
 
 df = pd.read_csv("data.csv")
-print("F")
 y = df["target"]
 x = df["tweet"]
 xtr,ytr,xt,yt = train_test_split(

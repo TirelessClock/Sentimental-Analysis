@@ -28,7 +28,27 @@ While using Naive-Bayes Classifier, our job is to compute the Posterior Probabil
     
     P(B|A) = P(x1|A) . P(x2|A) . P(x3|A) . P(x4|A).... P(xn|A)
 
-Computing this, we find the Likelihood. 
+    Computing this, we find the Likelihood. 
 
 
+# This project
 
+In this project, I have used a dataset of 1.6 Million Tweets (https://www.kaggle.com/datasets/kazanova/sentiment140?resource=download) to train a Naive Bayes ML model to determine the positivity/negativity of a tweet. This dataset gives the positivity/negativity/neutrality of a given tweet on a 0-4 scale, with 0 being negative, 2 neutral and 4 being positive. 
+This project involves: 
+
+1. Downloading CSV into a Pandas Dataframe.
+
+2. **Preprocessing** - 
+   - Casing - Converting all tweets to lowercase
+   - URL/punctuation/hashtags/@ Removal - These characters do not help in the computation and their removal makes tokenization and vectorization easier. I did this using regex and string operations.
+   - Stopword removal and Tokenization - Using the Natural Language Toolkit Python library, I removed all the "extra" (or "stopwords") words in the sentence such as "in" "and" "the" etc. which are irrelevant to the computation. This is followed by tokenization, wherein each word is converted into a token, that is, broken up, and made fit for vectorization. The word_tokenize function in the NLTK library was used for this. 
+   - Stemming - Using the PorterStemmer() stemmer in the NLTK library, the words are "stemmed". This means that the words with prefixes and suffixes are normalized. Eg. Bigger -> Big, Eating -> Eat etc.
+   - Lemmetizing - Using the WordNetLemmatizer() Lemmetizer in the NLTK library, words are lemmetized. In lemmatization we replace words with their ideal morphological equivalent. Eg. Better -> Good, Horrible -> Bad etc.
+
+3. Training and Testing data splitting (test size: 20%) 
+
+4. Vectorization - Used CountVectorizer() method in sklearn for transforming training and test data.
+
+5. Training Data - Used MultinomialNB() method within sklearn.naive_bayes, the first column ("target") is used as the y_train and the sixth column ("tweet") is used as the x_train. 
+
+6. Testing Data - The 20% data reserved for test data is now sent through the now trained model. 

@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib as mpl
 import string
 
-# NTK imports
+# NLTK imports
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -77,6 +77,3 @@ xt_vec = cv.transform(xt_clean).toarray()
 
 mn = MultinomialNB()
 mn.fit(xtr_vec,ytr)
-
-y_pred = mn.predict(xt_vec)
-print(y_pred)
